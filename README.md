@@ -20,7 +20,7 @@ Getting Started
 $ git clone git@github.com:Tomohiro/redmine-box.git
 $ cd redmine-box
 $ bundle install --path vendor/bundle
-$ bundle berks install --path cookbooks
+$ bundle exec berks install --path cookbooks
 ```
 
 
