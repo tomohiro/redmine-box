@@ -9,7 +9,6 @@ Requirements
 
 - Ruby 2.0.0
 - Vagrant 1.1.5
-- Berkshelf
 
 
 Getting Started
@@ -21,7 +20,7 @@ Getting Started
 $ git clone git@github.com:Tomohiro/redmine-box.git
 $ cd redmine-box
 $ bundle install --path vendor/bundle
-$ berks install --path cookbooks
+$ bundle berks install --path cookbooks
 ```
 
 
