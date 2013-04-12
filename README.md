@@ -28,5 +28,7 @@ Test
 --------------------------------------------------------------------------------
 
 ```sh
+$ vagrant up
+$ vagrant ssh-config >> ~/.ssh/config
 $ bundle exec rake spec
 ```
