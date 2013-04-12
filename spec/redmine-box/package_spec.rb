@@ -6,4 +6,10 @@ describe :Packages do
     it { should be_running }
     it { should be_enabled }
   end
+
+  describe 'apache2' do
+    it { should be_installed }
+    it { should be_running }
+    it { should be_enabled }
+  end
 end
