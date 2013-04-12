@@ -41,9 +41,15 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = %w(cookbooks site-cookbooks)
-    # chef.roles_path     = '../my-recipes/roles'
-    # chef.data_bags_path = "../my-recipes/data_bags"
+    chef.roles_path     = 'roles'
 
     chef.add_role 'redmine'
+    chef.json = {
+      :postgresql => {
+        :password => {
+          :postgres => ''
+        }
+      }
+    }
   end
 end
