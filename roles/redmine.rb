@@ -1,7 +1,7 @@
-name 'Redmine'
-description 'Redmine role'
-
+name 'redmine'
+description 'The base role for Redmine system'
 run_list(
-  'recipe[postgresql]',
+  'recipe[build-essential]',
+  'recipe[postgresql::server]',
   'recipe[openssl]'
 )
