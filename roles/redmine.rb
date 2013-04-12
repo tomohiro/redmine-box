@@ -4,5 +4,6 @@ run_list(
   'recipe[apt]',
   'recipe[build-essential]',
   'recipe[postgresql::server]',
-  'recipe[openssl]'
+  'recipe[openssl]',
+  'recipe[apache2]'
 )
