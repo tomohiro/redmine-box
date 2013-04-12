@@ -7,7 +7,7 @@ RSpec.configure do |c|
   c.include(Serverspec::Helper::Ssh)
   c.include(Serverspec::Helper::Debian)
   c.before do
-    host  = File.basename(Pathname.new(example.metadata[:location]).dirname)
+    host = `vagrant ssh-config | grep "^Host" | cut -d' ' -f2`
     if c.host != host
       c.ssh.close if c.ssh
       c.host  = host
