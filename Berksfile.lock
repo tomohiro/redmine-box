@@ -1,0 +1,2 @@
+cookbook 'postgresql', :locked_version => '2.2.2'
+cookbook 'openssl', :locked_version => '1.0.2'
