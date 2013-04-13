@@ -33,7 +33,7 @@ Add Vagrant ssh configuration to your `~/.ssh/config`.
 $ vagrant ssh-config --host redmine-box >> ~/.ssh/config
 ```
 
-Or edit your `~/.ssh/config` by hand like this.
+Or you can also edit your `~/.ssh/config` by hand like below.
 
 ```
 Host redmine-box
