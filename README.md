@@ -27,8 +27,28 @@ $ bundle exec berks install --path cookbooks
 Test
 --------------------------------------------------------------------------------
 
+Add Vagrant ssh configuration to the your `~/.ssh/config`.
+
+```sh
+$ vagrant ssh-config --host redmine-box >> ~/.ssh/config
+```
+
+Or edit your `~/.ssh/config` by hand like this.
+
+```
+Host redmine-box
+    User vagrant
+    HostName 127.0.0.1
+    Port 2222
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    PasswordAuthentication no
+    IdentityFile ~/.vagrant.d/insecure_private_key
+    IdentitiesOnly yes
+    LogLevel FATAL
+```
+
 ```sh
 $ vagrant up
-$ vagrant ssh-config >> ~/.ssh/config
 $ bundle exec rake spec
 ```
