@@ -27,7 +27,7 @@ $ bundle exec berks install --path cookbooks
 Test
 --------------------------------------------------------------------------------
 
-Add Vagrant ssh configuration to the your `~/.ssh/config`.
+Add Vagrant ssh configuration to your `~/.ssh/config`.
 
 ```sh
 $ vagrant ssh-config --host redmine-box >> ~/.ssh/config
