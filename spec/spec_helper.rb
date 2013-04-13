@@ -3,11 +3,11 @@ require 'pathname'
 require 'net/ssh'
 
 RSpec.configure do |c|
-  c.sudo_password = ENV['SUDO_PASSWORD']
   c.include(Serverspec::Helper::Ssh)
   c.include(Serverspec::Helper::Debian)
+
   c.before do
-    host = `vagrant ssh-config | grep "^Host" | cut -d' ' -f2`
+    host  = File.basename(Pathname.new(example.metadata[:location]).dirname)
     if c.host != host
       c.ssh.close if c.ssh
       c.host  = host
@@ -16,5 +16,4 @@ RSpec.configure do |c|
       c.ssh   = Net::SSH.start(c.host, user, options)
     end
   end
-
 end
