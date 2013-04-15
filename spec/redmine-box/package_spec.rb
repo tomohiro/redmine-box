@@ -12,4 +12,8 @@ describe :Packages do
     it { should be_running }
     it { should be_enabled }
   end
+
+  describe 'git' do
+    it { should be_installed }
+  end
 end
