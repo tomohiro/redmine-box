@@ -6,5 +6,6 @@ run_list(
   'recipe[git]',
   'recipe[openssl]',
   'recipe[postgresql::server]',
-  'recipe[apache2]'
+  'recipe[apache2]',
+  'recipe[ruby_build]'
 )
