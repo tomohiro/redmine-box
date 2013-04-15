@@ -16,4 +16,9 @@ describe :Packages do
   describe 'git' do
     it { should be_installed }
   end
+
+  describe '/usr/local/bin/ruby-build' do
+    it { should be_file }
+    it { should be_executable }
+  end
 end
