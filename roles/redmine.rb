@@ -9,3 +9,13 @@ run_list(
   'recipe[apache2]',
   'recipe[ruby_build]'
 )
+
+default_attributes(
+  {
+    'postgresql' => {
+      'password' => {
+        'postgres' => ''
+      }
+    }
+  }
+)
