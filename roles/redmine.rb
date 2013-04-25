@@ -1,5 +1,6 @@
 name 'redmine'
 description 'The base role for Redmine system'
+
 run_list(
   'recipe[apt]',
   'recipe[build-essential]',
@@ -8,4 +9,14 @@ run_list(
   'recipe[postgresql::server]',
   'recipe[apache2]',
   'recipe[ruby_build]'
+)
+
+default_attributes(
+  {
+    'postgresql' => {
+      'password' => {
+        'postgres' => ''
+      }
+    }
+  }
 )
