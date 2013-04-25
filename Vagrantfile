@@ -14,7 +14,7 @@ Vagrant.configure('2') do |config|
     vb.customize ['modifyvm', :id, '--memory', '1024']
   end
 
-  if ENV['VAGRANT_ENV'] == 'test'
+  unless ENV['VAGRANT_ENV'] == 'test'
     config.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
       chef.roles_path = 'roles'
