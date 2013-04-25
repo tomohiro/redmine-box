@@ -1,55 +1,25 @@
 # -*- mode: ruby -*-
-# vi: set ft=ruby :
+# # vi: ft=ruby
 
 Vagrant.configure('2') do |config|
-  config.vm.box      = 'ubuntu1204'
-  config.vm.box_url  = 'http://goo.gl/8kWkm'
+  config.vm.box = 'ubuntu1204'
+  config.vm.box_url = 'http://f.willianfernandes.com.br/vagrant-boxes/UbuntuServer12.04amd64.box'
   config.vm.hostname = 'redmine-box'
 
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.provider :virtualbox do |vb|
+    # Disable GUI, use headless mode
+    vb.gui = false
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
+    # Use VBoxManage to customize the VM. For example to change memory:
+    vb.customize ['modifyvm', :id, '--memory', '1024']
+  end
 
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network :public_network
+  if ENV['VAGRANT_ENV'] == 'test'
+    config.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
+      chef.roles_path = 'roles'
 
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
-  #
-
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = %w(cookbooks site-cookbooks)
-    chef.roles_path     = 'roles'
-
-    chef.add_role 'redmine'
-    chef.json = {
-      :postgresql => {
-        :password => {
-          :postgres => ''
-        }
-      }
-    }
+      chef.add_role 'redmine'
+    end
   end
 end
