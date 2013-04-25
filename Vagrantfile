@@ -14,22 +14,24 @@ Vagrant.configure('2') do |config|
     vb.customize ['modifyvm', :id, '--memory', '1024']
   end
 
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
-    chef.roles_path     = 'roles'
+  if ENV['VAGRANT_ENV'] == 'test'
+    config.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
+      chef.roles_path = 'roles'
 
-    if ENV['http_proxy']
-      require 'uri'
-      proxy = URI.parse(ENV['http_proxy'])
-      chef.json = {
-        'apt' => {
-          'cacher_ipaddress' => proxy.host,
-          'cacher_port'      => proxy.port
+      if ENV['http_proxy']
+        require 'uri'
+        proxy = URI.parse(ENV['http_proxy'])
+        chef.json = {
+          'apt' => {
+            'cacher_ipaddress' => proxy.host,
+            'cacher_port'      => proxy.port
+          }
         }
-      }
-      chef.add_role 'proxy'
-    end
+        chef.add_role 'proxy'
+      end
 
-    chef.add_role 'redmine'
+      chef.add_role 'redmine'
+    end
   end
 end

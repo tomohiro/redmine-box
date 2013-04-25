@@ -8,24 +8,25 @@ Requirements
 --------------------------------------------------------------------------------
 
 - Ruby 2.0.0
-- Vagrant 1.1.5
+- Vagrant 1.2.2
 
 
 Getting Started
 --------------------------------------------------------------------------------
 
-### Install dependencies
+Clone this repository
 
 ```sh
-$ git clone git@github.com:Tomohiro/redmine-box.git
+$ git clone git://github.com:Tomohiro/redmine-box.git
+```
+
+Install dependencies
+
+```sh
 $ cd redmine-box
 $ bundle install --path vendor/bundle
 $ bundle exec berks install --path cookbooks
 ```
-
-
-Test
---------------------------------------------------------------------------------
 
 Add Vagrant ssh configuration to your `~/.ssh/config`.
 
@@ -47,6 +48,35 @@ Host redmine-box
     IdentitiesOnly yes
     LogLevel FATAL
 ```
+
+Install the chef-solo by knife solo.
+
+```sh
+$ bundle exec knife prepare redmine-box -i redmine-box
+Bootstrapping Chef...
+Enter the password for vagrant@redmine-box: [vagrant]
+...
+```
+
+
+Provisioning
+--------------------------------------------------------------------------------
+
+### For development
+
+```sh
+$ vagrant provision
+```
+
+### For test
+
+```sh
+$ bundle exec knife solo cook redmine-box
+```
+
+
+Test
+--------------------------------------------------------------------------------
 
 ```sh
 $ vagrant up
