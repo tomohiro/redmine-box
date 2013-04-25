@@ -71,7 +71,7 @@ $ vagrant provision
 ### For test
 
 ```sh
-$ bundle exec knife cook redmine-box
+$ bundle exec knife solo cook redmine-box
 ```
 
 
