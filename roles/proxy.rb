@@ -1,6 +1,7 @@
 name 'proxy'
-description 'Setting proxy role'
+description 'Setting up Linux proxy role'
 run_list(
+  'recipe[chef-proxy]',
   'recipe[apt]',
   'recipe[apt::cacher-client]'
 )

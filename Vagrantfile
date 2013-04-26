@@ -19,19 +19,24 @@ Vagrant.configure('2') do |config|
       chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
       chef.roles_path = 'roles'
 
+      chef.add_role 'redmine'
+
       if ENV['http_proxy']
+        chef.add_role 'proxy'
+
         require 'uri'
         proxy = URI.parse(ENV['http_proxy'])
         chef.json = {
           'apt' => {
             'cacher_ipaddress' => proxy.host,
             'cacher_port'      => proxy.port
+          },
+          'proxy' => {
+            'http_proxy'  => ENV['http_proxy'],
+            'https_proxy' => ENV['http_proxy'],
           }
         }
-        chef.add_role 'proxy'
       end
-
-      chef.add_role 'redmine'
     end
   end
 end
