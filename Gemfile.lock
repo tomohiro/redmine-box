@@ -6,7 +6,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.4)
     archive-tar-minitar (0.5.2)
-    berkshelf (1.4.0)
+    berkshelf (1.4.1)
       activesupport (>= 3.2.0)
       addressable
       celluloid (>= 0.13.0)
@@ -90,7 +90,7 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     retryable (1.3.2)
-    ridley (0.9.0)
+    ridley (0.9.1)
       activesupport (>= 3.2.0)
       addressable
       celluloid (~> 0.13.0)
@@ -115,7 +115,7 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.13.1)
-    serverspec (0.2.13)
+    serverspec (0.2.16)
       highline
       net-ssh
       rspec
