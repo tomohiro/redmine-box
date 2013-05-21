@@ -14,13 +14,13 @@ Requirements
 Getting Started
 --------------------------------------------------------------------------------
 
-Clone this repository
+Clone this repository:
 
 ```sh
 $ git clone git://github.com:Tomohiro/redmine-box.git
 ```
 
-Install dependencies
+Install dependencies:
 
 ```sh
 $ cd redmine-box
@@ -28,13 +28,13 @@ $ bundle install --path vendor/bundle
 $ bundle exec berks install --path cookbooks
 ```
 
-Add Vagrant ssh configuration to your `~/.ssh/config`.
+Add Vagrant ssh configuration to your `~/.ssh/config`:
 
 ```sh
 $ vagrant ssh-config --host redmine-box >> ~/.ssh/config
 ```
 
-Or you can also edit your `~/.ssh/config` by hand like below.
+Or you can also edit your `~/.ssh/config` by hand like below:
 
 ```
 Host redmine-box
@@ -49,10 +49,10 @@ Host redmine-box
     LogLevel FATAL
 ```
 
-Install the chef-solo by knife solo.
+Install the chef-solo by knife solo:
 
 ```sh
-$ bundle exec knife prepare redmine-box -i redmine-box
+$ bundle exec knife solo prepare redmine-box -i redmine-box
 Bootstrapping Chef...
 Enter the password for vagrant@redmine-box: [vagrant]
 ...
