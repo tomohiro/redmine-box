@@ -26,3 +26,12 @@ describe file('/usr/local/bin/ruby-build') do
   it { should be_file }
   it { should be_executable }
 end
+
+describe file('/usr/local/rbenv/bin/rbenv') do
+  it { should be_file }
+  it { should be_executable }
+end
+
+describe file('/etc/apache2/conf.d/passenger.conf') do
+  it { should be_file }
+end
